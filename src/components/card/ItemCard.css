@@ -1,0 +1,77 @@
+/* ItemCard.css */
+.item-card {
+    position: relative;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    background-color: #ffffff; /* Set a default background color */
+  }
+  
+  .item-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+  }
+  
+  .item-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .item-details {
+    padding: 15px;
+  }
+  
+  .product-id {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .item-name {
+    margin: 0;
+    color: #333;
+  }
+  
+  .price-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .item-price {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .view-button {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+  
+  .view-button:hover {
+    background-color: #2077b3;
+  }
+  
+
+  .item-image-container {
+    display: flex;
+    
+  }
+
+  .drawer-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
