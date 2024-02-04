@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
+import { FormControlLabel, Radio, RadioGroup, Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined.js';
@@ -21,6 +21,7 @@ const Auth = () => {
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
     const handleSubmit = (e) => {
+        console.log(formData)
         e.preventDefault()
         if(isSignUp) {
             dispatch(signup(formData, navigate));
@@ -75,9 +76,17 @@ const Auth = () => {
                                 <>
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
                                     <Input name="lastName" label="Last Name" handleChange={handleChange} half /> 
+                                    
+                                    <Input name="account" label='Account' handleChange={handleChange} type='password' />
                                 </>
                             )
                         }
+                        
+                        <RadioGroup className={classes.Radio} name="userType" row onChange={handleChange}>
+                            <FormControlLabel  value="BUYER" control={<Radio />} label="Buyer" />
+                            <FormControlLabel  value="SELLER" control={<Radio />} label="Seller" />
+                        </RadioGroup>
+                        
                         <Input name="email" label='Email Address' handleChange={handleChange} type='email' />
                         <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
                         {

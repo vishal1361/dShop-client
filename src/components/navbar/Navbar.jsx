@@ -16,7 +16,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
+  console.log("User : ", user);
+  
   useEffect(() => {
     const token = user?.token;
     if(token) {
@@ -61,7 +62,7 @@ const logout = () => {
           {
             user ? (
                 <div className={classes.profile}>
-                    <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+                    {/* <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name}</Avatar> */}
                     <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                     
                 </div>
