@@ -6,34 +6,55 @@ export default makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
+  },pageContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(2),
+
+    '& > *': {
+      marginBottom: theme.spacing(2), // Add spacing between form cards
+    },
   },
   paper: {
-    padding: theme.spacing(10),
-    margin: 25
-  },
-  Grid: {
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  TextField: {
-    width: 750
-  },
-  LongTextField: {
-    width: 1515
+    padding: theme.spacing(3),
+    margin: 5,
+    maxWidth: 800,
+    width: '100%', 
+    padding: theme.spacing(3),
   },
   form: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    margin: 10
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  Grid: {
+    marginBottom: theme.spacing(2),
+  },
+  TextField: {
+    marginBottom: theme.spacing(2),
+  },
+  LongTextField: {
+    marginBottom: theme.spacing(2),
   },
   fileInput: {
-    width: '97%',
-    margin: '10px 10px',
+    marginTop: theme.spacing(2),
   },
   buttonSubmit: {
-    width: 300,
-    height: 50,
-    marginRight: 10,
-  }
+    margin: theme.spacing(3, 0),
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  },
+  draggerContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'left',
+    textAlign: 'left',
+},
 }));

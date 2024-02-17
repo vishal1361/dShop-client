@@ -34,7 +34,7 @@ export default makeStyles((theme) => ({
   },
   profile: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     width: '250px',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
@@ -42,6 +42,8 @@ export default makeStyles((theme) => ({
       marginTop: 20,
       justifyContent: 'center',
     },
+    gap: '30px'
+    
   },
   logout: {
     marginLeft: '5px',
@@ -59,4 +61,15 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(deepPurple[500]),
     backgroundColor: deepPurple[500],
   },
+  popover: {
+    display: 'flex',
+    flexDirection: 'column', // Stack elements vertically
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(3), // Add some padding
+    backgroundColor: '#f0f0f0', // Light grey background color
+    borderRadius: 8,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)', // Lighter box shadow
+    backdropFilter: 'blur(10px)', // Blur effect for the background
+  }
 }));

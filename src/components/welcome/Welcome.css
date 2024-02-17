@@ -1,24 +1,41 @@
 /* Banner.css */
+
+/* Common styles for all user types */
 .banner {
-    background-color: #3498db; /* Adjust the background color as needed */
-    color: #ffffff; /* Adjust the text color as needed */
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .banner-content {
-    max-width: 800px; /* Adjust the maximum width of the content */
-    margin: 0 auto; /* Center the content */
-  }
-  
-  .banner h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .banner p {
-    font-size: 1.2em;
-    line-height: 1.5;
-    margin-bottom: 15px;
-  }
-  
+  padding: 20px;
+  text-align: center;
+}
+
+.banner-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.banner h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.banner p {
+  font-size: 1.2em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Styles for BUYER user type */
+.banner.buyer {
+  background-color: #3498db; /* Blue background for BUYER */
+  color: #ffffff; /* White text for BUYER */
+}
+
+/* Styles for SELLER user type */
+.banner.seller {
+  background-color: #27ae60; /* Green background for SELLER */
+  color: #ffffff; /* White text for SELLER */
+}
+
+/* Default styles if user type is not specified or unknown */
+.banner.default {
+  background-color: #e74c3c; /* Red background for default */
+  color: #ffffff; /* White text for default */
+}
