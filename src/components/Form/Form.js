@@ -38,37 +38,6 @@ const Form = () => {
     }, [productFormData])
 
 
-    const sendToIPFS = async (e) => {
-
-        if (productFormData) {
-            try {
-
-                const formData = new FormData();
-                formData.append("file", productFormData.selectedFile);
-                // console.log(productFormData);
-                const res = await axios({
-                    method: "post",
-                    url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-                    maxContentLength: 'Infinity',
-                    data: formData,
-                    headers: {
-                        'pinata_api_key': 'cc191261f396747f3039',
-                        'pinata_secret_api_key': '3fd1334847be6f5e8cf577f8ba2e219e952ad470c87b7545bf8f3761d1f33105',
-                        "Content-Type": "multipart/form-data"
-                    },
-                });
-
-                const hash = `ipfs://${res.data.IpfsHash}`;
-                message.success(`Product save @ ${hash}`);
-                return hash;
-            } catch (error) {
-                console.log(error);
-                message.error("Error uploding product @ PINATA!");
-                throw error("Product upload failed")
-            }
-        }
-    }
-
     const handleSubmit = async(e) => {
         console.log(productFormData);
         e.preventDefault();
@@ -260,7 +229,7 @@ const Form = () => {
                                 multiple={true}
                                 required
                                 fileList={productFormData.productImages}
-                                accept=".png,.jpeg,.jpg,.svg"
+                                accept=".png,.jpeg,.jpg,.svg,.avif"
                                 onChange={(info) => {
                                     setProductFormData({
                                         ...productFormData,

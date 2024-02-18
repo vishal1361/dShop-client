@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import productReducer from './productReducer.js';
+import sellerReducer from './sellerReducer.js';
 import auth from "./auth.js";
-export default combineReducers({ productReducer, auth });
+export default combineReducers({ sellerReducer, auth });
