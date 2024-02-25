@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { ethers, JsonRpcProvider, AlchemyProvider, Web3Provider } from 'ethers';
 import { FormControlLabel, Radio, RadioGroup, Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
@@ -9,8 +10,56 @@ import Icon from './icon.js';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {signin, signup} from '../../actions/auth.js'
+import { message } from 'antd';
+import MetaMaskOnboarding from '@metamask/onboarding'
 const initialState = {firstName: '', lastName: '', email: '',  password: '', confirmPassword: ''};
+
+
 const Auth = () => {
+    const [defaultAccount, setDefaultAccount] = useState(null);
+    const [userBalance, setUserBalance] = useState(null);
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const provider = ((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider());
+    const installMetaMask = () => {
+        const onboarding = new MetaMaskOnboarding();
+        onboarding.startOnboarding();
+    }
+
+    const connectwalletHandler = async() => {
+        try {
+            if (window.ethereum && window.ethereum.isMetaMask) {
+            
+                // await provider.send({
+                //     method: "wallet_switchEthereumChain",
+                //     params: [{ chainId: "0x31337" }],
+                //   });
+    
+                provider.send("eth_requestAccounts", []).then(async () => {
+                    await accountChangedHandler(provider.getSigner());
+                })
+                message.success({content: "Metamask available!"});
+            } else {
+                message.error({content: "Installing MetaMask..."});
+                installMetaMask();
+            }
+            return true;
+        } catch(err) {
+            message.error({content: 'Error boarding MetaMask!', key: 'loading'});
+            return false;
+        }
+    }
+    const accountChangedHandler = async (newAccount) => {
+        const address = await newAccount.getAddress();
+        setDefaultAccount(address);
+        const balance = await newAccount.getBalance()
+        setUserBalance(ethers.utils.formatEther(balance));
+        await getuserBalance(address)
+    }
+    const getuserBalance = async (address) => {
+        const balance = await provider.getBalance(address, "latest")
+    }
+
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const classes = useStyles();
@@ -20,13 +69,17 @@ const Auth = () => {
     const state = null;
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         console.log(formData)
         e.preventDefault()
-        if(isSignUp) {
-            dispatch(signup(formData, navigate));
-        } else {
-            dispatch(signin(formData, navigate))
+        
+        if(connectwalletHandler()) {
+            const metaMaskSigner = await provider.getSigner();
+            if(isSignUp) {
+                dispatch(signup(formData, metaMaskSigner,  navigate));
+            } else {
+                dispatch(signin(formData,metaMaskSigner, navigate))
+            }
         }
     };
     const handleChange = (e) => {

@@ -46,9 +46,20 @@ const Form = () => {
                 message.error("Add product images!");
 
             } else {
-                //uploading data on IPFS from server
-                // const hash = await sendToIPFS({...productFormData, sellerId: user?.result?.id});
-                dispatch(addProductData({...productFormData, sellerId: user?.result?.id}, navigate));
+                var data = {
+                    productName: "BREEZEWALK SHOES",
+                    brandName: 'ADIDAS',
+                    category: 'WOMEN',
+                    sellingPrice: '1499.0',
+                    color : 'PINK',
+                    quantity : '2N',
+                    shippingWeight: '10',
+                    productSpecifications: 'LACELESS SHOES WITH ELASTIC STRAPS Built for walking. Revitalized for style. Sharp and simple, meet clean and laceless. These adidas walking -inspired shoes have a textile upper and elastic straps for a minimalist look. The snug, sock-like feel keeps you light on your feet. Cut what\'s unnecessary, keep the attitude.',
+                    aboutProduct: '',
+                    technicalDetails: '',
+                    productImages: productFormData.productImages,
+                }
+                dispatch(addProductData({...data, sellerId: user?.result?.id}, navigate));
                 // clear();
             }
         } catch(error) {
@@ -86,8 +97,8 @@ const Form = () => {
     }
 
     return (
-        <div className={classes.pageContainer}>
-            <form autoComplete="off"  noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+        <div className={classes.pageContainer} >
+            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Paper className={classes.paper} elevation={6} >
 
                     <Grid className={classes.Grid} container spacing={5}>
@@ -229,7 +240,7 @@ const Form = () => {
                                 multiple={true}
                                 required
                                 fileList={productFormData.productImages}
-                                accept=".png,.jpeg,.jpg,.svg,.avif"
+                                accept=".png,.jpeg,.jpg,.svg,.avif,.webp"
                                 onChange={(info) => {
                                     setProductFormData({
                                         ...productFormData,

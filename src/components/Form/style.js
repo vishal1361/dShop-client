@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   root: {
+    // overflowY: 'auto',
+    maxHeight: '70vh',
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
     },
@@ -12,6 +14,8 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: theme.spacing(2),
+    overflow: 'auto',  // Make the container scrollable
+    // maxHeight: '80vh', 
 
     '& > *': {
       marginBottom: theme.spacing(2), // Add spacing between form cards

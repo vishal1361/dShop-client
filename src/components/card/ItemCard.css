@@ -5,10 +5,14 @@
     border-radius: 10px;
     overflow: hidden;
     margin: 10px;
-    width: 300px;
+    width: 260px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s, transform 0.3s;
     background-color: #ffffff; /* Set a default background color */
+  }
+  .image-container {
+    width: 100%;
+    overflow: hidden;
   }
   
   .item-card:hover {
@@ -18,10 +22,11 @@
   
   .item-image {
     width: 100%;
+    height: auto;
     max-height: 200px;
     object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
   }
   
   .item-details {

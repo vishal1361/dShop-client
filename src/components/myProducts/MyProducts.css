@@ -1,0 +1,17 @@
+.productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+    justify-content: flex-start; 
+    overflow-y: auto;
+    /* border: 1px solid #c22626;  */
+    /* padding: 10px; */
+    max-height: 75vh;
+  }
+  
+  .productCard {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: auto;
+  }
+  

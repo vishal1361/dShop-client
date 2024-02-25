@@ -5,6 +5,8 @@ import  { TextField, Button, Typography, Paper } from '@material-ui/core'
 import { useDispatch, useSelector } from "react-redux";
 // import { createPost, updatePost } from "../../actions/posts.js";
 import { useNavigate } from "react-router-dom";
+import { Empty } from "antd";
+import { Link } from "react-router-dom";
 
 const MyOrders = ({buyerId}) => {
   const classes = useStyles();
@@ -24,7 +26,22 @@ const MyOrders = ({buyerId}) => {
     }
 
   return (
-    <div>MyOrders</div>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Empty
+            image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+            imageStyle={{
+                height: 200, // Adjust the height as needed
+            }}
+            description={
+              <span>
+              No orders yet! Explore our products and <Link to='/products'>shop here</Link>.
+              </span>
+          
+            }
+        >
+            {/* <Button type="primary">Create Now</Button> */}
+        </Empty>
+  </div>
   )
 }
 

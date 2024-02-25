@@ -2,11 +2,12 @@ import {AUTH, LOGOUT} from '../constants/actionTypes.js'
 import * as api from '../api/index.js'
 import {message} from 'antd';
 
-export const signin = (formData, navigate) => async (dispatch) => {
+export const signin = (formData,metaMaskSigner, navigate) => async (dispatch) => {
     try {
         message.loading({ content: `Signing in...`, key: 'loading' }); 
         const { data } = await api.signin(formData);
         dispatch({ type: AUTH, data });
+        data.signer = metaMaskSigner;
         message.success({ content: `Welcome back, ${data.result.name}!`, key: 'loading' }); 
         navigate('/');
     } catch (error) {
@@ -15,7 +16,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
     }
 }
 
-export const signup = (formData, navigate) => async (dispatch) => {
+export const signup = (formData,metaMaskSigner,  navigate) => async (dispatch) => {
     try {
         message.loading({ content: `Setting up. Please wait...`, key: 'loading' }); 
         const { data } = await api.signup(formData);

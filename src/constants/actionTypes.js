@@ -7,6 +7,10 @@ export const FETCH_MY_PRODUCTS = 'FETCH_MY_PRODUCTS';
 export const BUY = 'BUY';
 export const FETCH_ALL_PRODUCTS = 'FETCH_ALL_PRODUCTS';
 export const FETCH_MY_ORDERS = 'FETCH_MY_ORDERS';
+export const CANCEL_MY_ORDER = 'CANCEL_MY_ORDER';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const FETCH_MY_CART = 'FETCH_MY_CART';
 
 // User's Auth actions
 export const AUTH = 'AUTH';
